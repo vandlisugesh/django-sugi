@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Welcome to Currency Application</title>
+        <style type="text/css">
+        	.back-btn {
+        		display: block;
+			    clear: both;
+			    position: relative;
+			    top: 30px;
+        	}
+        </style>
+    </head>
+
+    <body bgcolor="silver">
+        <h1>Currency Application</h1>
+        <br />
+      	{% if user.is_anonymous %}
+      		<h4> Hi {{user}}, you are not logged in.</h4>
+      		<h4>Please login</h4>
+      		<button class = "back-btn">
+				<a href="{% url 'django.contrib.auth.views.login' %}">Login</a><br />
+			</button>
+      	{% else %}
+      		<button class = "back-btn">
+				<a href="/form_data/" >Back</a><br />
+			</button>
+      {% endif %}
+    </body>
+</html>

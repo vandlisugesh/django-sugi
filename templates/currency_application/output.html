@@ -1,0 +1,67 @@
+{% load currency_tags %}
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <title>Notes and Coins</title>
+        <style type="text/css">
+        	.back-btn {
+        		display: block;
+			    clear: both;
+			    position: relative;
+			    top: 30px;
+        	}
+        </style>
+    </head>
+
+    <body bgcolor="LightSteelBlue">
+    	{% if int_part %}
+        	<h1>The required denominations are : </h1>
+        {% else %}
+        	<h2> The entered amount is invalid </h2>
+        {% endif %}
+
+        {% if notes_dict %}
+        	<table border="1" style="width:25%;float:left">
+        		<tr>
+    				<th>Notes</th>
+    				<th>Quantity</th>		
+  				</tr>
+        		{% for item in notes_list %}
+        			{% if notes_dict|access:item %}
+        				<tr>
+        					<td align="center"> {{ item }} </td> 
+        					<td align="center"> {{ notes_dict|access:item }} </td>
+        				</tr>
+        			{% endif %}
+        		{% endfor %}
+        	</table>
+        {% endif %}
+
+        {% if coins_dict %}
+        	<table border="1" style="width:25%;float:left;margin-left: 75px;">
+        		<tr>
+    				<th>Coins</th>
+    				<th>Quantity</th>		
+  				</tr>
+        		{% for item in coins_list %}
+        			{% if coins_dict|access:item %}
+        				<tr>
+        					<td align="center"> {{ item }}p </td> 
+        					<td align="center"> {{ coins_dict|access:item }} </td>
+        				</tr>
+        			{% endif %}
+        		{% endfor %}
+        	</table>
+        {% endif %}
+
+    </body>
+<br />
+<button class = "back-btn">
+	<a href="" >Back</a><br />
+</button>
+<button class = "back-btn" style="margin-left: 75px;top:10px">
+	<a href="/logout/" >Logout</a><br />
+</button>
+
+</html>
